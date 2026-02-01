@@ -16,17 +16,27 @@ export default function useOrder() {
   const [tip, setTip] = useState<number>(0);
   const [savedOrders, setSavedOrders] = useState<SavedOrder[]>([]);
   const [activeOrderId, setActiveOrderId] = useState<string | null>(null);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load saved orders from localStorage on component mount
   useEffect(() => {
     const loadedOrders = getFromLocalStorage<SavedOrder[]>(LOCAL_STORAGE_KEYS.SAVED_ORDERS, []);
     setSavedOrders(loadedOrders);
+    setHasLoaded(true);
+    setIsLoading(false);
   }, []);
 
   // Save orders to localStorage whenever they change
   useEffect(() => {
-    saveToLocalStorage(LOCAL_STORAGE_KEYS.SAVED_ORDERS, savedOrders);
-  }, [savedOrders]);
+    // Only save after initial load to prevent overwriting with empty state
+    if (hasLoaded) {
+      const saved = saveToLocalStorage(LOCAL_STORAGE_KEYS.SAVED_ORDERS, savedOrders);
+      if (!saved) {
+        console.error('Failed to save orders to localStorage');
+      }
+    }
+  }, [savedOrders, hasLoaded]);
 
   // Calculate total amount for an order
   const calculateTotal = useCallback((items: OrderItem[], tipAmount: number): number => {
@@ -150,6 +160,7 @@ export default function useOrder() {
     tip,
     savedOrders,
     activeOrderId,
+    isLoading,
     
     // Actions
     setTip,

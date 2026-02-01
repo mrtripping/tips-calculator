@@ -5,13 +5,14 @@ import TipPercentageForm from "./components/TipPercentageForm";
 import SavedOrders from "./components/SavedOrders";
 import ToastContainer, { useToast } from "./components/Toast";
 import Footer from "./components/Footer";
+import EmptyOrder from "./components/EmptyOrder";
 import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 import { useGitHubProfile } from "./hooks/useGitHubProfile";
 import type { SavedOrder } from "./types/order";
 
 function App() {
-  const { order, tip, setTip, addItem, removeItem, updateQuantity, placeOrder, savedOrders, loadOrder, deleteOrder, activeOrderId, clearActiveOrder } = useOrder();
+  const { order, tip, setTip, addItem, removeItem, updateQuantity, placeOrder, savedOrders, loadOrder, deleteOrder, activeOrderId, clearActiveOrder, isLoading } = useOrder();
   const { toasts, addToast, removeToast } = useToast();
   const { profile, loading } = useGitHubProfile("mrtripping");
 
@@ -31,6 +32,17 @@ function App() {
     const result = deleteOrder(id);
     addToast(result.message, result.type);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 italic">Cargando...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -90,7 +102,7 @@ function App() {
               <OrderTotals order={order} tip={tip} placeOrder={handlePlaceOrder} />
             </>
           ) : (
-            <p className="text-center">La orden esta vacia</p>
+            <EmptyOrder />
           )}
         </div>
       </main>

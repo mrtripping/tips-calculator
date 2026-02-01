@@ -1,75 +1,125 @@
-# React + TypeScript + Vite
+# Tips Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application for calculating tips and managing restaurant orders with local storage persistence.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧮 **Tip Calculator** - Calculate tips with predefined percentages (10%, 20%, 50%)
+- 📱 **Mobile-First Design** - Fully responsive UI optimized for all devices
+- 💾 **Order Management** - Save, edit, and load orders with localStorage persistence
+- 🔔 **Toast Notifications** - Modern notification system for user feedback
+- ⚡ **Real-time Updates** - Live quantity editing with instant price calculations
+- 🎨 **Modern UI** - Clean design with Tailwind CSS and smooth animations
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Frontend**: React 19 with TypeScript
+- **Styling**: Tailwind CSS v4
+- **Build Tool**: Vite
+- **State Management**: React Hooks with localStorage persistence
+- **Icons**: Lucide React & SVG Icons
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 18+ 
+- npm or yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Clone the repository
+git clone https://github.com/mrtripping/tips-calculator.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Navigate to the project directory
+cd tips-calculator
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Build the application
+npm run build
+
+# Preview the production build
+npm run preview
 ```
+
+## Usage
+
+1. **Add Items**: Click menu items to add them to your order
+2. **Edit Quantities**: Use the + and - buttons to adjust item quantities
+3. **Set Tip**: Select a tip percentage (10%, 20%, or 50%)
+4. **Save Order**: Click "Guardar Orden" to save the current order
+5. **Manage Orders**: Access saved orders via the "📋 Órdenes" button
+6. **Edit Orders**: Load a saved order to edit and update it
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── Footer.tsx     # Application footer
+│   ├── MenuItem.tsx    # Menu item component
+│   ├── OrderContents.tsx # Order display and quantity controls
+│   ├── OrderTotals.tsx # Order totals and checkout button
+│   ├── SavedOrders.tsx # Saved orders management
+│   ├── TipPercentageForm.tsx # Tip selection
+│   └── Toast.tsx      # Toast notifications
+├── constants/          # Application constants
+├── hooks/            # Custom React hooks
+├── types/            # TypeScript type definitions
+├── utils/            # Utility functions
+└── data/             # Mock data (menu items)
+```
+
+## Key Features Explained
+
+### Order Persistence
+- Orders are automatically saved to localStorage
+- Each saved order includes items, tip amount, total, and timestamp
+- Orders can be loaded for editing or permanently deleted
+
+### Responsive Design
+- Mobile-first approach with progressive enhancement
+- Adaptive layouts for mobile, tablet, and desktop
+- Touch-friendly interface with appropriate sizing
+
+### Type Safety
+- Full TypeScript implementation throughout the codebase
+- Strong typing for all components and state management
+- Type-safe localStorage operations
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+**[mrtripping]** - *Full Stack Developer*
+
+- GitHub: [@mrtripping](https://github.com/mrtripping)
+- Portfolio: [Coming Soon]
+
+---
+
+Made with ❤️ by [mrtripping](https://github.com/mrtripping)

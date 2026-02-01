@@ -39,7 +39,7 @@ function App() {
           Calculadora de Propinas y Consumo
         </h1>
       </header>
-      <main className="max-w-7xl mx-auto py-8 sm:py-12 md:py-20 px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      <main className="max-w-7xl mx-auto py-8 sm:py-12 md:py-20 px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
         <div className="p-4 sm:p-5">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">Menú</h2>

@@ -71,8 +71,13 @@ function App() {
           )}
 
           <div className="space-y-3 mt-6 sm:mt-8 md:mt-10">
-            {menuItems.map((item) => (
-              <MenuItem key={item.id} item={item} addItem={addItem} />
+            {menuItems.map((item, index) => (
+              <MenuItem 
+                key={item.id} 
+                item={item} 
+                addItem={addItem}
+                className={index === menuItems.length - 1 ? "lg:mb-6" : ""}
+              />
             ))}
           </div>
         </div>

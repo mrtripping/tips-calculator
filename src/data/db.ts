@@ -1,6 +1,6 @@
-import type { menuItem } from "../types";
+import type { MenuItem } from "../types";
 
-export const menuItems: menuItem[] = [
+export const menuItems: MenuItem[] = [
   {
     id: 1,
     name: "Pizza a la Leña Chica",
@@ -38,8 +38,8 @@ export const menuItems: menuItem[] = [
   },
   {
     id: 8,
-    name: "Jugo de Naranja",
-    price: 15,
+    name: "Agua Natural",
+    price: 10,
   },
   {
     id: 9,
